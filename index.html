@@ -12,22 +12,69 @@
     :root{--brand:#005a9c;--muted:#6b7280;--card-bg:#fff;--page-bg:#f4f7f6;--radius:12px}
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;padding:0}
-    body{font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, Arial;background:var(--page-bg);color:#172032}
+    body{
+      font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background:var(--page-bg);color:#172032
+    }
 
-    /* container so parent iframe can control spacing */
     .wrap{padding:18px}
 
-    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .service-card{background:var(--card-bg);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 20px rgba(20,30,40,0.06)}
-    .service-media{height:150px;overflow:hidden}
-    .service-media img{width:100%;height:100%;object-fit:cover;display:block}
-    .service-body{padding:12px}
-    .service-body h3{margin:0 0 6px;color:var(--brand);font-size:1rem}
-    .service-body p{margin:0;color:var(--muted);font-size:0.95rem;line-height:1.4}
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px
+    }
+
+    .service-card{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      box-shadow:0 8px 20px rgba(20,30,40,0.06);
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+      cursor:pointer;
+    }
+
+    /* card hover lift */
+    .service-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 12px 28px rgba(20,30,40,0.12);
+    }
+
+    .service-media{
+      height:150px;
+      overflow:hidden;
+    }
+
+    .service-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform 0.35s ease;
+    }
+
+    /* image zoom on hover */
+    .service-card:hover img{
+      transform:scale(1.05);
+    }
+
+    .service-body{
+      padding:12px;
+      text-align:center
+    }
+    .service-body h3{
+      margin:0;
+      color:var(--brand);
+      font-size:1rem
+    }
 
     footer{margin-top:18px;color:var(--muted);font-size:0.9rem}
 
-    @media (max-width:520px){.service-media{height:120px}}
+    @media (max-width:520px){
+      .service-media{height:120px}
+    }
   </style>
 </head>
 <body>
@@ -37,89 +84,61 @@
 
         <article class="service-card" data-tags="home">
           <div class="service-media"><img loading="lazy" src="images/flat.png" alt="Flat Cleaning — SLG"></div>
-          <div class="service-body">
-            <h3>Flat Cleaning</h3>
-            <p>Studio to 3BHK cleaning, sanitisation of kitchen & bathrooms, and quick touch ups for frequent visits.</p>
-          </div>
+          <div class="service-body"><h3>Flat Cleaning</h3></div>
         </article>
 
         <article class="service-card" data-tags="home">
           <div class="service-media"><img loading="lazy" src="images/Duplex Cleaning.png" alt="Duplex Cleaning"></div>
-          <div class="service-body">
-            <h3>Duplex Cleaning</h3>
-            <p>Specialized care for multi-level homes: stairs, corridors and floor-by-floor deep cleaning.</p>
-          </div>
+          <div class="service-body"><h3>Duplex Cleaning</h3></div>
         </article>
 
         <article class="service-card" data-tags="home deep">
           <div class="service-media"><img loading="lazy" src="images/villa.png" alt="Villa Cleaning"></div>
-          <div class="service-body">
-            <h3>Villa Cleaning</h3>
-            <p>Full villa maintenance: glass, floors, upholstery and outdoor areas. Custom deep-clean packages available.</p>
-          </div>
+          <div class="service-body"><h3>Villa Cleaning</h3></div>
         </article>
 
         <article class="service-card" data-tags="deep special">
           <div class="service-media"><img loading="lazy" src="images/bathroom.png" alt="Bathroom Deep Cleaning"></div>
-          <div class="service-body">
-            <h3>Bathroom Deep Cleaning</h3>
-            <p>Remove limescale, stains and bacteria. Includes tile and grout cleaning and sanitizer application.</p>
-          </div>
+          <div class="service-body"><h3>Bathroom Deep Cleaning</h3></div>
         </article>
 
         <article class="service-card" data-tags="special">
           <div class="service-media"><img loading="lazy" src="images/glass.png" alt="Glass and Facade Cleaning"></div>
-          <div class="service-body">
-            <h3>Glass &amp; Facade Cleaning</h3>
-            <p>Streak-free treatments to restore clarity and brightness for windows, facades and showrooms.</p>
-          </div>
+          <div class="service-body"><h3>Glass & Facade Cleaning</h3></div>
         </article>
 
         <article class="service-card" data-tags="home">
           <div class="service-media"><img loading="lazy" src="images/sofa.png" alt="Sofa and Upholstery Care"></div>
-          <div class="service-body">
-            <h3>Sofa &amp; Upholstery Care</h3>
-            <p>Steam-cleaning and vacuuming to remove dust, allergens and stains from soft furnishings.</p>
-          </div>
+          <div class="service-body"><h3>Sofa & Upholstery Care</h3></div>
         </article>
 
         <article class="service-card" data-tags="special">
           <div class="service-media"><img loading="lazy" src="images/watertank.png" alt="Water Tank Sanitization"></div>
-          <div class="service-body">
-            <h3>Water Tank Sanitization</h3>
-            <p>Six-stage cleaning: draining, sludge removal, scrubbing, vacuuming, disinfection &amp; drying.</p>
-          </div>
+          <div class="service-body"><h3>Water Tank Sanitization</h3></div>
         </article>
 
         <article class="service-card" data-tags="commercial">
           <div class="service-media"><img loading="lazy" src="images/Commercial .png" alt="Commercial Housekeeping"></div>
-          <div class="service-body">
-            <h3>Commercial Housekeeping</h3>
-            <p>Confidential, professional cleaning for offices, showrooms &amp; retail; flexible schedule to minimize disruption.</p>
-          </div>
+          <div class="service-body"><h3>Commercial Housekeeping</h3></div>
         </article>
 
         <article class="service-card" data-tags="industrial">
           <div class="service-media"><img loading="lazy" src="images/industrial .png" alt="Industrial Floor Care"></div>
-          <div class="service-body">
-            <h3>Industrial Floor Care</h3>
-            <p>Heavy-duty cleaning for warehouses and factories. We follow strict health &amp; safety procedures.</p>
-          </div>
+          <div class="service-body"><h3>Industrial Floor Care</h3></div>
         </article>
 
       </section>
     </main>
 
     <footer>
-      <small>&copy; <span id="year"></span> SLG Housekeeping Services — All rights reserved. For quick bookings call <strong>+91 9949191912</strong>.</small>
+      <small>&copy; <span id="year"></span> SLG Housekeeping Services — All rights reserved. 
+      For quick bookings call <strong>+91 9949191912</strong>.</small>
     </footer>
   </div>
 
   <script>
-    // Keep the JS minimal for embedding inside an iframe
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // graceful image fallback
     document.querySelectorAll('.service-media img').forEach(img => {
       img.addEventListener('error', ()=>{
         img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400"><rect width="100%" height="100%" fill="%23f4f7f6"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%239aa9b1" font-size="24">Image not found</text></svg>'
