@@ -3,147 +3,354 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SLG Housekeeping — Services</title>
+  <title>SLG Housekeeping — Premium Services</title>
   <meta name="description" content="Professional flat, villa, commercial and deep cleaning services." />
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    :root{--brand:#005a9c;--muted:#6b7280;--card-bg:#fff;--page-bg:#f4f7f6;--radius:12px}
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;padding:0}
-    body{
-      font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      background:var(--page-bg);color:#172032
+    /* --- CSS Variables & Reset --- */
+    :root {
+      --brand: #005a9c;       /* Deep Royal Blue */
+      --brand-dark: #004275;
+      --accent: #ffb81e;      /* Service Gold */
+      --text-main: #1e293b;   /* Dark Slate */
+      --text-light: #64748b;  /* Muted Slate */
+      --card-bg: #ffffff;
+      --page-bg: #f8fafc;
+      --radius: 16px;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
     }
 
-    .wrap{padding:18px}
+    * { box-sizing: border-box; }
 
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:18px
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
     }
 
-    .service-card{
-      background:var(--card-bg);
-      border-radius:var(--radius);
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-      box-shadow:0 8px 20px rgba(20,30,40,0.06);
-      transition:transform 0.3s ease, box-shadow 0.3s ease;
-      cursor:pointer;
+    body {
+      font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+      background-color: var(--page-bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* card hover lift */
-    .service-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 12px 28px rgba(20,30,40,0.12);
+    /* --- Layout Utilities --- */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    .service-media{
-      height:150px;
-      overflow:hidden;
+    main {
+      flex: 1;
     }
 
-    .service-media img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transition:transform 0.35s ease;
+    /* --- Header Section --- */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid #e2e8f0;
     }
 
-    /* image zoom on hover */
-    .service-card:hover img{
-      transform:scale(1.05);
+    .brand-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--brand);
+      margin: 0;
+      letter-spacing: -1px;
     }
 
-    .service-body{
-      padding:12px;
-      text-align:center
-    }
-    .service-body h3{
-      margin:0;
-      color:var(--brand);
-      font-size:1rem
+    .brand-title span {
+      color: var(--accent);
     }
 
-    footer{margin-top:18px;color:var(--muted);font-size:0.9rem}
+    .brand-tagline {
+      color: var(--text-light);
+      font-weight: 500;
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
 
-    @media (max-width:520px){
-      .service-media{height:120px}
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin: 0;
+      position: relative;
+      display: inline-block;
+    }
+    
+    /* Decorative underline */
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* --- Grid Layout --- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    /* --- Card Component --- */
+    .service-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+    }
+
+    /* Hover Effects */
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+
+    /* Image Area */
+    .service-media {
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+      background-color: #f1f5f9; /* Placeholder color */
+    }
+
+    .service-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .service-media img {
+      transform: scale(1.08);
+    }
+
+    /* Card Content */
+    .service-body {
+      padding: 1.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    .service-body h3 {
+      margin: 0;
+      color: var(--brand-dark);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .service-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* "Book Now" simulated button on hover */
+    .service-action {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--brand);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover .service-action {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Footer --- */
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .cta-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--brand);
+      font-weight: 700;
+      text-decoration: none;
+      background: rgba(0, 90, 156, 0.05);
+      padding: 8px 16px;
+      border-radius: 50px;
+      margin-left: 8px;
+      transition: background 0.2s;
+    }
+
+    .cta-phone:hover {
+      background: rgba(0, 90, 156, 0.1);
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 600px) {
+      .brand-title { font-size: 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-media { height: 200px; }
+      .header { margin-bottom: 2rem; }
     }
   </style>
 </head>
 <body>
+
   <div class="wrap">
+
     <main>
       <section class="services-grid" id="grid" aria-live="polite">
 
         <article class="service-card" data-tags="home">
-          <div class="service-media"><img loading="lazy" src="images/flat.png" alt="Flat Cleaning — SLG"></div>
-          <div class="service-body"><h3>Flat Cleaning</h3></div>
+          <div class="service-media"><img loading="lazy" src="images/flat.png" alt="Flat Cleaning"></div>
+          <div class="service-body">
+            <h3>Flat Cleaning</h3>
+            <span class="service-tag">Residential</span>
+            <span class="service-action">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
         </article>
 
         <article class="service-card" data-tags="home">
           <div class="service-media"><img loading="lazy" src="images/Duplex Cleaning.png" alt="Duplex Cleaning"></div>
-          <div class="service-body"><h3>Duplex Cleaning</h3></div>
+          <div class="service-body">
+            <h3>Duplex Cleaning</h3>
+            <span class="service-tag">Residential</span>
+            <span class="service-action">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
         </article>
 
         <article class="service-card" data-tags="home deep">
           <div class="service-media"><img loading="lazy" src="images/villa.png" alt="Villa Cleaning"></div>
-          <div class="service-body"><h3>Villa Cleaning</h3></div>
+          <div class="service-body">
+            <h3>Villa Cleaning</h3>
+            <span class="service-tag">Deep Clean</span>
+            <span class="service-action">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
         </article>
 
         <article class="service-card" data-tags="deep special">
           <div class="service-media"><img loading="lazy" src="images/bathroom.png" alt="Bathroom Deep Cleaning"></div>
-          <div class="service-body"><h3>Bathroom Deep Cleaning</h3></div>
+          <div class="service-body">
+            <h3>Bathroom Deep Cleaning</h3>
+            <span class="service-tag">Sanitization</span>
+            <span class="service-action">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
         </article>
 
         <article class="service-card" data-tags="special">
           <div class="service-media"><img loading="lazy" src="images/glass.png" alt="Glass and Facade Cleaning"></div>
-          <div class="service-body"><h3>Glass & Facade Cleaning</h3></div>
+          <div class="service-body">
+            <h3>Glass & Facade</h3>
+            <span class="service-tag">Exterior</span>
+            <span class="service-action">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
         </article>
 
         <article class="service-card" data-tags="home">
           <div class="service-media"><img loading="lazy" src="images/sofa.png" alt="Sofa and Upholstery Care"></div>
-          <div class="service-body"><h3>Sofa & Upholstery Care</h3></div>
+          <div class="service-body">
+            <h3>Sofa & Upholstery</h3>
+            <span class="service-tag">Care</span>
+            <span class="service-action">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
         </article>
 
         <article class="service-card" data-tags="special">
           <div class="service-media"><img loading="lazy" src="images/watertank.png" alt="Water Tank Sanitization"></div>
-          <div class="service-body"><h3>Water Tank Sanitization</h3></div>
+          <div class="service-body">
+            <h3>Water Tank Sanitization</h3>
+            <span class="service-tag">Hygiene</span>
+            <span class="service-action">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
         </article>
 
         <article class="service-card" data-tags="commercial">
           <div class="service-media"><img loading="lazy" src="images/Commercial .png" alt="Commercial Housekeeping"></div>
-          <div class="service-body"><h3>Commercial Housekeeping</h3></div>
+          <div class="service-body">
+            <h3>Commercial Housekeeping</h3>
+            <span class="service-tag">Business</span>
+            <span class="service-action">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
         </article>
 
         <article class="service-card" data-tags="industrial">
           <div class="service-media"><img loading="lazy" src="images/industrial .png" alt="Industrial Floor Care"></div>
-          <div class="service-body"><h3>Industrial Floor Care</h3></div>
+          <div class="service-body">
+            <h3>Industrial Floor Care</h3>
+            <span class="service-tag">Heavy Duty</span>
+            <span class="service-action">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
         </article>
 
       </section>
     </main>
 
     <footer>
-      <small>&copy; <span id="year"></span> SLG Housekeeping Services — All rights reserved. 
-      For quick bookings call <strong>+91 9949191912</strong>.</small>
+      <p>&copy; <span id="year"></span> SLG Housekeeping & Facility Services — All rights reserved.</p>
+      <p>Need help? <a href="tel:+919949191912" class="cta-phone"><i class="fas fa-phone-alt"></i> +91 9949191912</a></p>
     </footer>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Enhanced fallback image with SVG
+    const fallbackSvg = `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect fill='%23f1f5f9' width='800' height='600'/%3E%3Ctext fill='%23cbd5e1' font-family='sans-serif' font-size='40' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3ESLG Cleaning%3C/text%3E%3C/svg%3E`;
+
     document.querySelectorAll('.service-media img').forEach(img => {
-      img.addEventListener('error', ()=>{
-        img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400"><rect width="100%" height="100%" fill="%23f4f7f6"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%239aa9b1" font-size="24">Image not found</text></svg>'
-      })
-    })
+      img.addEventListener('error', () => {
+        img.src = fallbackSvg;
+        img.style.objectFit = 'cover';
+      });
+    });
   </script>
 </body>
 </html>
